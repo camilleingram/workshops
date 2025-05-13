@@ -11,37 +11,44 @@ public class UserInterface {
     }
 
     public void display(Scanner scanner) {
-        int command = getCommand(scanner);
+        int command = 0;
 
-        switch(command) {
-            case 1:
-                processGetByPriceRequest(scanner);
-                break;
-            case 2:
-                processGetByMakeModelRequest(scanner);
-                break;
-            case 3:
-                processGetByYearRequest(scanner);
-                break;
-            case 4:
-                processGetByColorRequest(scanner);
-                break;
-            case 5:
-                processGetByMileageRequest(scanner);
-                break;
-            case 6:
-                processGetByVehicleTypeRequest(scanner);
-                break;
-            case 7:
-                processGetAllVehiclesRequest();
-                break;
-            case 8:
-                break;
-            case 9:
-                break;
-            case 99:
-                break;
+        while(command != 99) {
+            command = getCommand(scanner);
+
+            switch(command) {
+                case 1:
+                    processGetByPriceRequest(scanner);
+                    break;
+                case 2:
+                    processGetByMakeModelRequest(scanner);
+                    break;
+                case 3:
+                    processGetByYearRequest(scanner);
+                    break;
+                case 4:
+                    processGetByColorRequest(scanner);
+                    break;
+                case 5:
+                    processGetByMileageRequest(scanner);
+                    break;
+                case 6:
+                    processGetByVehicleTypeRequest(scanner);
+                    break;
+                case 7:
+                    processGetAllVehiclesRequest();
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 99:
+                    System.out.println("Exiting...");
+                    break;
+            }
         }
+
+
 
     }
 
@@ -122,7 +129,7 @@ public class UserInterface {
         displayVehicles(allVehicles);
     }
 
-    public int getCommand(Scanner scanner) {
+    private int getCommand(Scanner scanner) {
         System.out.println("What would you like to do?");
         System.out.println("1 - Find vehicle within a price range");
         System.out.println("2 - Find vehicles by make.model");

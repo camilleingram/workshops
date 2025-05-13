@@ -85,5 +85,17 @@ public class Vehicle {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return String.format("VIN: %d%n" +
+                             "Year: %d%n" +
+                             "Make/Model: %s %s%n" +
+                             "Type: %s%n" +
+                             "Color: %s%n" +
+                             "Odometer %d miles%n" +
+                             "Price: $%.2f%n",
+                             vin, year, make, model, vehicleType, color, odometer, price);
+    }
 }
 
