@@ -44,7 +44,7 @@ public class Dealership {
     public List<Vehicle> getVehiclesByPrice(double min, double max) {
         List<Vehicle> results = new ArrayList<>();
         for(Vehicle vehicle : inventory) {
-            if(vehicle.getPrice() > min && vehicle.getPrice() < max) {
+            if(vehicle.getPrice() >= min && vehicle.getPrice() <= max) {
                 results.add(vehicle);
             }
         }
@@ -110,6 +110,7 @@ public class Dealership {
 
     public void addVehicle(Vehicle vehicle) {
         inventory.add(vehicle);
+
     }
 
      public void removeVehicle(Vehicle vehicle) {
