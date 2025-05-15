@@ -39,8 +39,10 @@ public class UserInterface {
                     processGetAllVehiclesRequest();
                     break;
                 case 8:
+                    processAddVehicleRequest(scanner);
                     break;
                 case 9:
+                    processRemoveVehicleRequest(scanner);
                     break;
                 case 99:
                     System.out.println("Exiting...");
@@ -128,6 +130,54 @@ public class UserInterface {
         List<Vehicle> allVehicles = dealership.getAllVehicles();
         displayVehicles(allVehicles);
     }
+
+    public void processAddVehicleRequest(Scanner scanner) {
+        System.out.print("Enter vin: ");
+        int vin = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Enter year: ");
+        int year = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Enter make: ");
+        String make = scanner.nextLine();
+
+        System.out.print("Enter model: ");
+        String model = scanner.nextLine();
+
+        System.out.print("Enter type of vehicle: ");
+        String vehicleType = scanner.nextLine();
+
+        System.out.print("Enter color: ");
+        String color = scanner.nextLine();
+
+        System.out.print("Enter mileage: ");
+        int odometer = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Enter price: ");
+        double price = scanner.nextDouble();
+
+        Vehicle vehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
+        dealership.addVehicle(vehicle);
+
+        List<Vehicle> allVehicles = dealership.getAllVehicles();
+        displayVehicles(allVehicles);
+    }
+
+    public void processRemoveVehicleRequest(Scanner scanner) {
+        System.out.print("Which vehicle would you like to remove? ");
+        int index = scanner.nextInt();
+        scanner.nextLine();
+
+        Vehicle removedVehicle = dealership.getAllVehicles().get(index - 1);
+        dealership.removeVehicle(removedVehicle);
+
+        List<Vehicle> allVehicles = dealership.getAllVehicles();
+        displayVehicles(allVehicles);
+    }
+
 
     private int getCommand(Scanner scanner) {
         System.out.println("What would you like to do?");
